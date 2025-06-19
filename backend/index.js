@@ -1,4 +1,4 @@
-const express=require("express");
+const express = require("express");
 const { createTodo, updateTodo } = require("./types");
 const { todo } = require("./db");
 const app=express();
@@ -6,7 +6,7 @@ const app=express();
 app.use(express.json());
  
 app.post("/todo", async function(req,res){
-    const createPayload=req.body;
+    const createPayload = req.body;
     const parsedPayload=createTodo.safeParse(createPayload);
     if(!parsedPayload.success){
         res.status(411).json({
@@ -20,7 +20,7 @@ app.post("/todo", async function(req,res){
         completed: false
     })
     res.json({
-        msg: "Todo created successfully",
+        msg: "Todo created successfully"
     })
 })
 
@@ -34,7 +34,7 @@ app.get("/todos", async function(req, res){
 app.put("/completed", async function(req,res){
     const uploadPayload=req.body;
     const parsedPayload=updateTodo.safeParse(updatePayload);
-    
+
     if(!parsedPayload.success){
         res.status(411).json({
             msg: "You sent the wrong inputs",
